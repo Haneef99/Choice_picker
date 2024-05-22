@@ -65,10 +65,6 @@ const Acc = (props)=>{
     }
     function choice_picker(weights,n) // input is array of integers and length n
     {
-        // console.log("input info:");
-        // console.log(weights);
-        // console.log(n)
-
         let size=array_sum(weights,n);
         let pick=random_number_between(1,size);
         let j=0;
