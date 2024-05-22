@@ -20,6 +20,18 @@ const Acc = (props)=>{
         }
         return ans;
     }
+    function to_int(str) //str is a string of numbers
+    {
+        let ans=0;
+        let j=0;
+        let n=str.length;
+        while(j<n)
+        {
+            ans=(ans*10)+Number(str[j]);
+            j++;
+        }
+        return ans;
+    }
     function random_number()
     {
         let x=Math.random();
@@ -51,8 +63,12 @@ const Acc = (props)=>{
         }
         return sum;
     }
-    function choice_picker(weights,n)
+    function choice_picker(weights,n) // input is array of integers and length n
     {
+        // console.log("input info:");
+        // console.log(weights);
+        // console.log(n)
+
         let size=array_sum(weights,n);
         let pick=random_number_between(1,size);
         let j=0;
@@ -63,9 +79,27 @@ const Acc = (props)=>{
             j++;
         }
         j--;
+
+        console.log("here is the pick");
+        console.log(pick);
+        console.log("chosen event");
+        console.log(j+1);
+        console.log("\n\n\n\n");
+
         return j;
     }
 
+    function choice_picker_strin(str_weights,n)
+    {
+        let weights=[];
+        let j=0;
+        while(j<n)
+        {
+            weights[j]=Number(str_weights[j]);
+            j++;
+        }
+        return choice_picker(weights,n);
+    }
     /* GRAPH CODE */
     const data = [];
 
@@ -94,10 +128,10 @@ const Acc = (props)=>{
         );
     }
 
-    const [pick,setPick] = React.useState(choice_picker(props.data.weights,props.data.weights.length))
+    const [pick,setPick] = React.useState(choice_picker_strin(props.data.weights,props.data.weights.length))
 
     const handleOnClick = ()=>{
-        setPick(choice_picker(props.data.weights,props.data.weights.length));
+        setPick(choice_picker_strin(props.data.weights,props.data.weights.length));
     }
 
     return (

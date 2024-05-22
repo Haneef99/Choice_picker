@@ -8,6 +8,19 @@ function num_digits(x)
     }
     return ans;
 }
+function to_int(str) //str is a string of numbers
+{
+    let ans=0;
+    let j=0;
+    let n=str.length;
+    while(j<n)
+    {
+        ans=(ans*10)+Number(str[j]);
+        print(ans);
+        j++;
+    }
+    return ans;
+}
 function random_number()
 {
     let x=Math.random();
@@ -39,12 +52,10 @@ function array_sum(arr,n)
     }
     return sum;
 }
-function choice_picker(weights,n)
+function choice_picker(weights,n) //Input is array of integers and length n
 {
     let size=array_sum(weights,n);
     let pick=random_number_between(1,size);
-    print(pick);
-    print("\n");
     let j=0;
     let nsum=0;
     while(j<n && nsum<pick)
@@ -54,6 +65,19 @@ function choice_picker(weights,n)
     }
     j--;
     return j;
+}
+
+
+function choice_picker_strin(str_weights,n) // Use this function if input is array of strings (of numbers) instead of array of integers
+{
+    let weights=[];
+    let j=0;
+    while(j<n)
+    {
+        weights[j]=Number(str_weights[j]);
+        j++;
+    }
+    return choice_picker(weights,n);
 }
 
 
